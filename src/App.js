@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoList from './components/TodoList/TodoList';
 import './App.css';
 
@@ -7,34 +7,36 @@ function App() {
     {
       id: 1,
       text: "Finish Todo Component",
-      done: false
+      done: true
     },
     {
       id: 2,
       text: "Finish Large Button Component",
-      done: false
+      done: true
     },
     {
       id: 3,
       text: "Wash the dishes",
-      done: true
+      done: false
     },
     {
       id: 4,
       text: "Throw the garbage",
-      done: true
+      done: false
     }
-  ]
+  ];
 
-  function onItemClick () {
-    alert("Todo item clicked");
+  const [todos, setTodos] = useState(items);
+
+  function onItemClick (id) {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, done: true} : todo));
   }
 
   return (
     <div className="App">
       <h1>Zen Smart To Do App</h1>
       <div className="container">
-        <TodoList items={items} onItemClick={onItemClick} />
+        <TodoList items={todos} onItemClick={onItemClick} />
       </div>
     </div>
   );

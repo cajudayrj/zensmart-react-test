@@ -11,6 +11,7 @@
 
 .todo-list .todo-item {
     display: flex;
+    flex-direction: column;
     position: relative;
     padding: 20px;
     border: solid 2px #d5d54b;
@@ -20,4 +21,8 @@
 .todo-list .todo-item.done {
     border: solid 2px #3fad30;
     background-color: #94f0a3;
+}
+
+.todo-list .todo-item .large-button {
+    margin-left: auto;
 }

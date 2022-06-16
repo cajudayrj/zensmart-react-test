@@ -1,0 +1,19 @@
+.large-button {
+    background-color: #0b6bf2;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.large-button:hover {
+    background-color: #0243eb;
+}
+
+.large-button:disabled {
+    background-color: #dbe9fd;
+    pointer-events: none;
+    cursor: not-allowed;
+}
