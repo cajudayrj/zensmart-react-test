@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TodoList from './components/TodoList/TodoList';
 import './App.css';
+import LargeButton from './components/LargeButton/LargeButton';
 
 function App() {
   const items = [
@@ -27,16 +28,31 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(items);
+  const [todo, setTodo] = useState("");
 
   function onItemClick (id) {
     setTodos(todos.map(todo => todo.id === id ? {...todo, done: true} : todo));
   }
 
+  function addTodo(e) {
+    e.preventDefault();
+    setTodos([...todos, {id: Date.now(), text: todo, done: false}]);
+    setTodo("");
+  }
+
+  function removeTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id ));
+  }
+
   return (
     <div className="App">
       <h1>Zen Smart To Do App</h1>
+      <form className='todo-add-form' onSubmit={e => addTodo(e)}>
+        <input type="text" value={todo} onChange={e => setTodo(e.target.value)} />
+        <LargeButton type="submit" disabled={todo === ""} text="Add To Do" />
+      </form>
       <div className="container">
-        <TodoList items={todos} onItemClick={onItemClick} />
+        <TodoList items={todos} onItemClick={onItemClick} removeTodo={removeTodo} />
       </div>
     </div>
   );

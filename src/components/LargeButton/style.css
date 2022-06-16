@@ -14,6 +14,13 @@
 
 .large-button:disabled {
     background-color: #dbe9fd;
-    pointer-events: none;
     cursor: not-allowed;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+.cta-buttons .large-button + .large-button {
+    margin-left: 5px;
 }
